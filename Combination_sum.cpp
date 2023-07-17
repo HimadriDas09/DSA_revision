@@ -1,4 +1,16 @@
 #include<bits/stdc++.h>
+
+/* PROBLEM STATEMENT : arr : [1,2,3], target = 5 
+so return all the combinations (or subsets) that sums upto target
+and each combination should be in inc order (=> that why we 1st sorted arr)
+OUTPUT : [
+    [1,1,1,1,1],
+    [1,1,1,2],
+    [1,1,3],
+    [1,2,2],
+    [2,3]
+]*/
+
 void helper(int ind, int tar, vector<int> &arr, vector<int> &temp, vector<vector<int>> &ans, int &n)
 {
     //bc
