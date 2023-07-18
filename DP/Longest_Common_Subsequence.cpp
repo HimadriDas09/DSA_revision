@@ -1,5 +1,59 @@
 /* length of Longest Common Subsequence => eg : "adebc", "dcadb" ans : "adb" */
 
+//TABULATION : 
+/* TC : O(n * m) && SC : O(n * m) => further reduced to O(2m) using space opt*/
+
+/* dp[i][j] => LCS in str1[0...i] & str2[0....j] => this doesn't mean subsequence
+ends at ind i, j => but in case of LC SubStrings it does*/
+int tab(int str1, int str2) {
+
+    vector<vector<int>> dp(n+1, vector<int> (m+1, 0));
+
+    //oth row and oth col : all elem are already set to 0 in vector declaration
+
+    for(int i = 0; i < m+1; i++) dp[0][i] = 0//BC
+    for(int i = 0; i < n+1; i++) dp[i][0] = 0//BC
+
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
+            /* storing ans in dp[i][j] => LCS of str1[0...i-1] && LCS of str2[0...j-1] */
+            if(str1[i-1] == str2[j-1]) {
+                dp[i][j] = 1 + dp[i-1][j-1];
+            }
+            else{
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+            }
+        }
+    }
+    return dp[n][m];
+}
+
+//SPACE OPTIMISATION : 
+int SpaceOpt(int str1, int str2) {
+
+    vector<int> prev(m+1, 0);
+
+    for(int i = 1; i <= n; i++) {
+
+        vector<int> cur(m+1, 0);
+
+        for(int j = 1; j <= m; j++) {
+
+            if(str1[i-1] == str2[j-1]) {
+                cur[j] = 1 + prev[j-1];
+            }
+            else{
+                cur[j] = max(prev[j], cur[j-1]);
+            }
+        }
+        prev = cur;
+    }
+    return cur[m];
+}
+
+
+
+
 /* DP on strings : approach : match and not match */
 
 //BRUTE FORCE : 
@@ -43,27 +97,3 @@ int LCS(int ind1, int ind2, vector<vector<int>> &dp) {
 
 } 
 
-//TABULATION : 
-
-int tab(int str1, int str2) {
-
-    vector<vector<int>> dp(n+1, vector<int> (m+1, 0));
-
-    //oth row and oth col : all elem are 0
-    for(int i = 0; i < m+1; i++) dp[0][i] = 0//BC
-    for(int i = 0; i < n+1; i++) dp[i][0] = 0//BC
-
-    for(int i = 1; i <= n; i++) {
-        for(int j = 1; j <= m; j++) {
-            /* storing ans in dp[i][j] => LCS of str1[0...i-1] && LCS of str2[0...j-1] */
-            if(str1[i-1] == str2[j-1]) {
-                dp[i][j] = 1 + dp[i-1][j-1];
-            }
-            else{
-                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
-            }
-        }
-    }
-    return dp[n][m];
-}
-/* TC : O(n * m) && SC : O(n * m) => further reduced to O(2m) using space opt*/
