@@ -20,17 +20,38 @@ int LCS(int ind1, int ind2) {
 }
 //TC : O(2^n * 2^m), SC : aux stack space : O(ht of tree)
 
-
-//TABULATION : 
 /* shifting of ind is done, bcz we can't rep ind == -1 in tab table
 so ans of dp[-1] is stored in dp[0] && ans of dp[n-1] stored in dp[n] 
 && ans of f(i,j) => stored in dp[i+1][j+1] */
+
+//memoisation : TC : O(n * m) , SC : O(n + m) ht of tree
+int LCS(int ind1, int ind2, vector<vector<int>> &dp) {
+    if(ind1 < 0 || ind2 < 0) {
+        dp[ind1+1][ind2+1] = 0;
+        return dp[ind1+1][ind2+1];
+    }
+
+    /* checking for (ind1,ind2) => ans will be stored in dp[ind1+1][ind2+1] */
+    if(dp[ind1+1][ind2+1] != -1) return dp[ind1+1][ind2+1];
+
+    //find and store ans
+    if(s1[ind1] == s2[ind2]) {
+        return dp[ind1+1][ind2+1] = 1 + LCS(ind1-1, ind2-1);
+    }
+    
+    return dp[ind1+1][ind2+1] = max(LCS(ind1-1, ind2), LCS(ind1, ind2-1));
+
+} 
+
+//TABULATION : 
 
 int tab(int str1, int str2) {
 
     vector<vector<int>> dp(n+1, vector<int> (m+1, 0));
 
     //oth row and oth col : all elem are 0
+    for(int i = 0; i < m+1; i++) dp[0][i] = 0//BC
+    for(int i = 0; i < n+1; i++) dp[i][0] = 0//BC
 
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= m; j++) {
@@ -45,3 +66,4 @@ int tab(int str1, int str2) {
     }
     return dp[n][m];
 }
+/* TC : O(n * m) && SC : O(n * m) => further reduced to O(2m) using space opt*/
