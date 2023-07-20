@@ -1,4 +1,4 @@
-// TC : O(n) && SC : O(n)
+// (most optimal) TC : O(n) && SC : O(n) 
 #include<bits/stdc++.h>
 bool isValidParenthesis(string s)
 {
@@ -12,7 +12,7 @@ bool isValidParenthesis(string s)
         } else {
             /*it a closing bracket :
             - now if st is still empty() i.e beg of s is closing br
-            then return false */
+            then return false => we cannot balance it out*/
             if (st.empty())
               return false;
     
@@ -20,6 +20,8 @@ bool isValidParenthesis(string s)
             closing bracket : if there is a matching open bracket
             then fine else unbalanced*/
             int top = st.top();
+            /*NOTE : st.top() returns a reference to top elem => so for 
+            empty stack => it'll give reference ERROR*/
             st.pop();
             
             if ((s[i] == '}' && top == '{') ||  (s[i] == ']' && top == '[') ||
