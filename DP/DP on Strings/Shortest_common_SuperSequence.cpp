@@ -1,8 +1,25 @@
+/*QUESTION => 
+	s1 = "brute", s2 = "groot"
+	so create the shortest possible supersequence(=? => supersequence is a
+	sequence from which we can derive both s1 and s2)
+
+	one supersequence could be "brutegroot" > but is it shortest ? NO
+	
+	ans : "bgruoote"
+
+	APPROACH :
+		LCS(s1,s2) : "rt" whose len is 2
+		and len of rest part in ans is : (len(s1) - 2) + (len(s2) -2 ) 
+		so len(supersequence) is len of above statement + len(LCS)
+
+		- so iterate the LCS tabulation table from dp[n][m] to dp[0][0] > by the backward path > && determine which char were not choosen for LCS(this way order of char will also be maintained)
+*/
 #include <bits/stdc++.h> 
 string shortestSupersequence(string s1, string s2)
 {
 	// Write your code here.
 	int n = s1.length(), m = s2.length();
+
 	/*tabulation of LCS*/
 	vector<vector<int>> dp(n+1, vector<int> (m+1, 0));
 
@@ -19,6 +36,8 @@ string shortestSupersequence(string s1, string s2)
 			}
 		}
 	}
+
+	/***********************************************************************/
 
 	/* now traverse from dp[n][m] to 0th row/ 0th col => and whichever characters from both the strings
 	that are not part of the LCS add them to a string => that string will be the shortest common 

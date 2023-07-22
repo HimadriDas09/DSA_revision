@@ -1,3 +1,14 @@
+/*QUESTION => 
+    s1 = "babgbag", s2 = "bag"
+    how many times s2 can be extracted out of s1
+
+    ans : 5
+    bcz : ba*g***, ba****g, b****ag, **b**ag, ****bag
+
+    approach => match & notmatch => even after match > we can still choose
+    whether to pick this char OR i'll not pick it and look for this char in rem part of the string
+*/
+
 //Space Optimization to 1 array
 int numDistinct(string s, string t) {
     int n = s.length();
