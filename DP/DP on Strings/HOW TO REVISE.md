@@ -3,3 +3,5 @@
 2) Also do Printing LCS(for printing purposes)
 
 3) Shortest Common SuperSequence is very important
+
+4) must do Distinct Subsequences
