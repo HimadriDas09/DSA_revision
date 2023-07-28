@@ -19,7 +19,7 @@
     3. base case > one string exhaust and other doesn't > i.e s1 = "horse", s2 = "ros", i == -1 && j == 2, so to convert s1 to s2 > req j+1 insertions 
     sim, j == -1 && i == 3, so to convert s1 to s2 > req i+1 deletions
 */
-//memoisation
+//memoisation > 1 based ind for tabulation
 int f(int i, int j, string &word1, string &word2, vector<vector<int>> &dp) {
     //bc > when i < 0 & j isn't or when j < 0 & i isn't
     if(i == 0) return j;
