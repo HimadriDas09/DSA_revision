@@ -1,5 +1,7 @@
+// approach2: 
+
 /* asked to find the min len subarray whose sum of elem >= target*/
-/* approach: ⇒ Sliding Window: l = 0, r = 0, include elem using r > check if (sum ≥ target) { then update the len } and r++CONSIDER that now r rep then NXT elem to include in our subarray > do above suing while() till our sum ≥ target. NOW we won’t be inc the len of that subarray bcz we need min len subarray. NOW explore subarrays ending at r-1, within that subarray only, by excluding elem via the left pointer. so exclude elem now check if (cur subarray sum ≥ target ) {  update the len }, do this in while() till sum < target : now we need to include more elem in our subarray using r. */
+/* approach1: ⇒ Sliding Window: l = 0, r = 0, include elem using r > check if (sum ≥ target) { then update the len } and r++CONSIDER that now r rep then NXT elem to include in our subarray > do above suing while() till our sum ≥ target. NOW we won’t be inc the len of that subarray bcz we need min len subarray. NOW explore subarrays ending at r-1, within that subarray only, by excluding elem via the left pointer. so exclude elem now check if (cur subarray sum ≥ target ) {  update the len }, do this in while() till sum < target : now we need to include more elem in our subarray using r. */
 // TC: O(2n) SC: O(1)
 #include<bits/stdc++.h>
 int minSubArrayLen(int target, vector<int>& nums) {
