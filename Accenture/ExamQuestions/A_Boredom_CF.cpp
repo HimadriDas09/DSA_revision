@@ -1,3 +1,7 @@
+// for optimized : refer to u tube
+
+
+
 // TLE solution
 
 #include<iostream>
