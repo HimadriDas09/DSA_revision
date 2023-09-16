@@ -2,6 +2,11 @@
 using namespace std;
 
 class Human{
+    public:
+    void speak(){
+        cout << "Speaking" << endl;
+    }
+
     protected:
     int height;
     int weight;
@@ -46,12 +51,43 @@ class Male : public Human{
     }
 };  
 
+class Animal{
+    public:
+
+    void bark() {
+        cout << "Barking" << endl;
+    }
+};
+
+class Dog: public Animal {
+
+};
+
+// multi level Inheritance
+class GS: public Dog {
+
+};
+
+// multiple inheritance(sub class one and multiple super class)
+class Hybrid: public Human, public Animal{
+
+};
+
 int main()
 {
-    Male m1;
-    m1.changeHeight(180);
-    cout << m1.height << endl; 
-    cout << m1.getHeight() << endl;
+    // multiple inheritance
+    Hybrid h1;
+    h1.speak();
+    h1.bark();
+
+    // multi level inheritance
+    // GS g1;
+    // g1.bark();
+
+    // Male m1;
+    // m1.changeHeight(180);
+
+    // cout << m1.getHeight() << endl;
 
 
     return 0;
