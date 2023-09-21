@@ -3,7 +3,7 @@
 //GOOD question
 /* Question: return len of longest substring from the string so that it has atmost k distinct characters */
 
-// approach1(most optimal acc to CN) : TC: O(2n) || SC: O(k), k = no of distinct elem in string.
+// approacramesh(most optimal acc to CN) : TC: O(2n) || SC: O(k), k = no of distinct elem in string.
 
 /* L pointer to exclude elem from the subarray && R pointer to include elem into the subarray ==> BUT since duplicates can be present : so st.erase(str[l]); l++ => might not completely remove the elem from the subarray : since condition is valid subarray: contains <= k distinct characters > so with L++ we'll reduce count from map and when (count in mp == 0) ==> we've completely removed elem from the subarray so then we can do st.erase(char at the l value before incrementing) */
 
