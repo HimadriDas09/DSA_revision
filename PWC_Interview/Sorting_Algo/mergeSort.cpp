@@ -2,6 +2,8 @@
 a single elem which is always sorted, then apply the code of merge
 2 sorted arrays */
 
+// TC: O(n*logn) => since we're dividing the elem into 2 halves untill we've 1 sized array: so that takes logn operations && for each of the divided array we're merging 2 sorted arrays : that i.e nearly O(n), not always O(n)
+
 void mergeTwoSortedArrays(int s1, int e1, int s2, int e2, int* arr) {
     // create a third array of size : sum of size of 2 arrays
     int n1 = e1-s1+1, n2 = e2-s2+1;
@@ -43,7 +45,7 @@ void mergeTwoSortedArrays(int s1, int e1, int s2, int e2, int* arr) {
 void mergeSort(int arr[], int l, int r) {
     // Write Your Code Here
     // bc
-    if(l >= r) return;
+    if(l >= r) return; // bcz no elem and 1 elem is sorted on it's own
 
     // sc
     int mid = (l+r)/2;
