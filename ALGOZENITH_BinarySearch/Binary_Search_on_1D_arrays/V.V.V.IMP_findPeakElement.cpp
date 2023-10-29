@@ -59,13 +59,13 @@ public:
             else {
                 // mid is not the peak
                 /* determine : which way to move to look for peak */
-                if(arr[lo] >= arr[mid]) {
+                if(arr[lo] > arr[mid]) {
                     /* move left: bcz probability of finding a peak in left
                     + if can't find(when lo..hi is SD then arr[lo] is the 
                     peak) */
                     hi = mid-1;
                 }
-                else if(arr[mid] <= arr[hi]) {
+                else if(arr[mid] < arr[hi]) {
                     // move right 
                     lo = mid+1;
                 }
@@ -85,3 +85,51 @@ public:
         return ans;
     }
 };
+
+// IMP:
+/* approach: 
+- if mid is peak > return it
+- if mid is not the peak, 
+    if(arr[mid-1] > arr[mid]) => doesn't matter what val is arr[lo], peak is in left side (either peak in between OR peak in extreme left)
+    
+    if(arr[mid] < arr[mid+1]) => doesn't matter what val arr[hi] holds, peak is in right side.
+ */
+// Discussion section > solution: 
+
+    if(nums.length == 1) return 0; // single element
+
+    int n = nums.length;
+
+    // check if 0th/n-1th index is the peak element
+    if(nums[0] > nums[1]) return 0;
+    if(nums[n-1] > nums[n-2]) return n-1;
+
+    // search in the remaining array
+    int start = 1;
+    int end = n-2;
+
+    while(start <= end) {
+        int mid = start + (end - start)/2;
+        if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) return mid;
+        else if(nums[mid] < nums[mid-1]) end = mid - 1;
+        else if(nums[mid] < nums[mid+1]) start = mid + 1;
+    }
+    return -1; // dummy return statement
+
+// solution 3:
+
+/* Intuition -
+As nums[i] != nums[i + 1] Every subarray we select has a peak element(atleast first or last element as nums[-1] = nums[n] = -∞) .
+Peak may be there in rejected subarray but we are sure it's present in selected subarray as we have above 2 constraints. */
+
+int findPeakElement(vector<int>& nums) {
+    int n=size(nums), l=0, h=n-1;
+    while(l < h){ // l<=h when u are expecting to return from loop itself
+        int m=(l+h) >> 1;
+        if(nums[m+1] > nums[m])
+            l = m+1;
+        else
+            h = m; //m is still part of selected subarray as m+1 is possible peak
+    }
+    return l;
+}
