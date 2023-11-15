@@ -1,6 +1,10 @@
 // BS on answers > 2D variation 
 /* C[i] = A[i] + B[i], then find the kth value if values of C sum matrix is arranged in sorted order */
 
+/* Since this is BS on answers only => i.e for check(x) == 1 => i.e if I should return 1 on x or 0
+=> if the cnt of elements from the C matrix which are <= x are >= k then return 1 
+bcz if cnt == k => then x is the kth element => then for >= k it will be 1 and we find the ans which gives the 1st occurence of 1. */
+
 #include<bits/stdc++.h>
 using namespace std;
 
