@@ -23,5 +23,6 @@
 -  (# states) * avg transition time of each state
 
 /********************* LATER TO SOLVE: ***********************************/
-1. Know why is the code for Coin_Combination 1 and 2 different
+1. Know why is the code for Coin_Combination 1 and 2 different.
+2. Couldn't solve Array Description in one go.
 
