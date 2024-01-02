@@ -24,5 +24,17 @@
 
 /********************* LATER TO SOLVE: ***********************************/
 1. Know why is the code for Coin_Combination 1 and 2 different.
-2. Couldn't solve Array Description in one go.
+2. Couldn't solve in one go :
+
+- Array Description (=> good dp state)
+
+- Counting Towers (=> good problem,how'd the ith problem look like, based on that we solve it, keep in mind to only solve the ith ind)
+
+- Rectangle Cutting (=> for a particular rectangle: what all can we do to reduce the problem ?)
+
+/******************** KEEP IN MIND ******************************/
+
+1. we should always work only on the ith ind i.e (we should be *only* be doing, what Recusion should do at the ith ind)
+    - and make recursion make on rest of the indices.
+2. 
 
